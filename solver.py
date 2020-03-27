@@ -1,7 +1,7 @@
 
 #vol266#page39#puzzle30
 global grid
-grid = [ [0,0,0,3,0,8,7,0,0],
+grid = [ [0,0,0,0,0,0,0,0,0],
          [1,0,0,5,0,0,0,3,2],
          [0,0,9,4,6,0,0,0,0],
          [5,4,2,0,0,0,0,8,0],
@@ -20,21 +20,35 @@ def possibleMove(x, y, n):
     grid
     #Test Columns and rows
     for i in range(0,9) :
-        if grid[y][i] == n :
+        if grid[x][i] == n :
             return False
     for i in range(0,9) :
-        if grid[i][x] == n :
+        if grid[i][y] == n :
             return False
     #Test the 3x3 that the tile belongs to.
     xSub = (x//3)*3
     ySub = (y//3)*3
     for i in range(0,3) :
         for j in range(0,3) :
-            if grid[ySub+i][xSub+i] == n:
+            if grid[xSub+i][ySub+j] == n:
                 return False
     #Otherwise the move is possible.
     return True
 
 def solve(grid):
-    print(possibleMove(2,1,1))
+    #Solves Puzzle through all possible solutions
+    for x in range(9) :
+        for y in range(9) :
+            #If this point on the board is blank.
+            if grid[x][y] == 0 :
+                #1 through 9
+                for i in range(1, 10) :
+                    if possibleMove(x,y,i) :
+                        grid[x][y] = i
+                        solve(grid)
+                        grid[x][y] = 0
+                return
+    printGrid(grid)
+    input("More?")
+
 solve(grid)
