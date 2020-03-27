@@ -15,7 +15,7 @@ def printGrid(theGrid):
     for row in theGrid:
         nums = ""
         for col in row:
-            nums += ' '
+            nums += ' ' #Sapces make it cleaner to read.
             nums += str(col)
         print(nums)
 def possibleMove(x, y, n):
@@ -59,8 +59,19 @@ def solve(grid):
 
 def keyGrid() :
     print("Manual user input of grid.\nEnter row by row your puzzle, use 0 as blanks.")
+    #todo: Ignore white space in lines, '1 2 3 4 5' AND '12345' should be equally valid input. Still print with the spaces though..
+    newGrid = []
+
+    i = 0
     for row in grid :
-        input("")
+        line = input("")
+        newRow = []
+        for nums in line :
+            newRow.append(int(nums))
+        grid[i] = newRow
+        i += 1
+
+    #Grid is input, but prints, unsolvably (regurgitates input)
 
 
 def mainMenu() :
@@ -69,7 +80,7 @@ def mainMenu() :
     ###show Grid to be solved.
     #Solve grid if one has been input.
     #Import Grid from File & Export Solution(s) to a File
-    #keyGrid()
+    keyGrid()
     solve(grid)
 #####
 mainMenu()
