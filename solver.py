@@ -1,3 +1,4 @@
+import os
 
 #vol266#page39#puzzle30
 global grid
@@ -11,8 +12,12 @@ grid = [ [0,0,0,3,0,8,7,0,0],
          [8,9,0,0,0,6,0,0,3],
          [0,0,5,9,0,3,0,0,0]]
 def printGrid(theGrid):
-    for line in theGrid:
-        print(line)
+    for row in theGrid:
+        nums = ""
+        for col in row:
+            nums += ' '
+            nums += str(col)
+        print(nums)
 def possibleMove(x, y, n):
     #Tests if choice of <n> is valid at location x,y in the grid
     grid
@@ -23,9 +28,10 @@ def possibleMove(x, y, n):
     for i in range(0,9) :
         if grid[i][y] == n :
             return False
-    #Test the 3x3 that the tile belongs to.
+    #floor division to maintain integer to use as a counter
     xSub = (x//3)*3
     ySub = (y//3)*3
+    #Test the 3x3 that the tile belongs to.
     for i in range(0,3) :
         for j in range(0,3) :
             if grid[xSub+i][ySub+j] == n:
@@ -47,17 +53,23 @@ def solve(grid):
                 return
     printGrid(grid)
     input("More?")
+    #return to mainMenu
+    #nextSolutionIfAvailable
+    #exit
 
 def keyGrid() :
     print("Manual user input of grid.\nEnter row by row your puzzle, use 0 as blanks.")
-    
+    for row in grid :
+        input("")
+
+
 def mainMenu() :
     #Manually Input Grid. Line By Line
     #Revise the Loaded Grid (Allow user to fix errors.)
     ###show Grid to be solved.
     #Solve grid if one has been input.
     #Import Grid from File & Export Solution(s) to a File
-    keyGrid()
+    #keyGrid()
     solve(grid)
 #####
 mainMenu()
