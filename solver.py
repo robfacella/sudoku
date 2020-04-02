@@ -75,12 +75,23 @@ def keyGrid() :
 
 
 def mainMenu() :
-    #Manually Input Grid. Line By Line
+    """
+    userChoice = 420
+    while (userChoice != 0):
+        print("")
+        print("1 -Show the Grid")    #Show Grid to be solved.
+        print("2 -Enter a new Grid") #Manually Input Grid. Line By Line
+        #print("3 -Import a grid from file.") #Import Grid from File & Export Solution(s) to a File
+        print("4 -Solve the Puzzle") #Solve grid if one has been input.
+        print("0 -Exit") #Exit menu loop.
+
+
+        userChoice = input("")
+    """
     #Revise the Loaded Grid (Allow user to fix errors.)
-    ###show Grid to be solved.
-    #Solve grid if one has been input.
-    #Import Grid from File & Export Solution(s) to a File
     keyGrid()
     solve(grid)
+
+
 #####
 mainMenu()
