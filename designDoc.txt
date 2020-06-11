@@ -1,0 +1,37 @@
+#Design Notes from 3/22/20
+9x9 grid, divided into (9) 3x3 chuncks
+
+Test for a Correctly Solved Puzzle state:
+	No (blank or null or 0 or invalid char) tiles 
+	No Duplicate numbers [1:9] within:
+		-any row
+		-any column
+		-any of the (9) 3x3 chunks
+
+Input Format
+	Line by Line in the cli
+	From a File
+		*Fill in a GUI
+		*Parsed from an Image
+
+Persistent Data:
+	Original Unsolved Puzzle State
+	Current State of the Puzzle while Solving (placeholder)
+	Solving Start Time
+	Solved State Array (in case there are multiple solutions)
+		-Solution
+		-Time needed to Reach this Solution
+	Counters (Count Loops as a metric for Improving the Algorithm)
+
+A proper Algorithm for Solving the Puzzle
+vs
+Bruteforcing ALL Solutions to the Puzzle
+
+###
+for i=0, i<9, i++
+   for j...
+      if blank {check valid choices, iterate over those options, if 
+none exist than break; else loop through solving recursively?}
+
+input -> solve -> check valid moves -> solve -> Output {A solution OR 
+unsolvable puzzle}
